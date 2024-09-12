@@ -9,3 +9,5 @@ Run
 ``` js
 node server.js
 ```
+
+> Add School project.postman_collection.json in postman for APIs

@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "77ae44a4-3270-4e47-b953-8070bd3b637b",
+		"name": "School project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21781815",
+		"_collection_link": "https://trade-core.postman.co/workspace/Trade-core-Workspace~5429eae2-2498-4dba-8887-ec2adc65f773/collection/21781815-77ae44a4-3270-4e47-b953-8070bd3b637b?action=share&source=collection_link&creator=21781815"
+	},
+	"item": [
+		{
+			"name": "Analytics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/classes/66e327922799570227003ea0/analytics",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"classes",
+						"66e327922799570227003ea0",
+						"analytics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All classes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/classes",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"classes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add class",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"className\": \"10th Grade\",\n    \"year\": 2024,\n    \"teacher\": \"64a7e2b8fc13ae1c4d000001\",\n    \"studentFees\": 5000,\n    \"maxStudents\": 30\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/classes",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"classes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add teacher",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"John Doe\",\n  \"gender\": \"male\",\n  \"dob\": \"1980-02-10\",\n  \"contactDetails\": \"john.doe@example.com\",\n  \"salary\": 60000,\n  \"assignedClasses\": [\"64a7e2b8fc13ae1c4d000002\"]  // class ID\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/teachers",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"teachers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get teachers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/teachers",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"teachers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get teachers expenses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/teachers/expenses",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"teachers",
+						"expenses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Jane Doe\",\n  \"gender\": \"female\",\n  \"dob\": \"2005-07-12\",\n  \"contactDetails\": \"jane.doe@example.com\",\n  \"class\": \"64a7e2b8fc13ae1c4d000002\",  // class ID\n  \"feesPaid\": true\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/students",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"students"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
