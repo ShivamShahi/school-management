@@ -37,3 +37,15 @@ exports.deleteStudent = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
+// Analytics: Get fees for students
+exports.getStudentExpenses = async (req, res) => {
+  try {
+    const totalExpenses = await Student.aggregate([
+      { $group: { _id: null, totalFees: { $sum: '$feesPaid' } } },
+    ]);
+    res.json(totalExpenses);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

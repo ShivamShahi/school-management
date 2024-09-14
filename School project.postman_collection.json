@@ -8,7 +8,7 @@
 	},
 	"item": [
 		{
-			"name": "Analytics",
+			"name": "Gender analytics",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -244,6 +244,26 @@
 						"api",
 						"students",
 						"66e5a0c6964e0d792aa37c8d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get students expenses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/students/expenses",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"students",
+						"expenses"
 					]
 				}
 			},
