@@ -34,3 +34,18 @@ exports.getTeacherExpenses = async (req, res) => {
   }
 };
 
+
+exports.deleteTeacher = async (req, res) => {
+  try {
+    const teacherToDelete = await Teacher.findByIdAndDelete(req.params.id);
+
+    if (!teacherToDelete) {
+      return res.status(404).json({ message: 'Teacher not found' });
+    }
+
+    res.json({ message: 'Teacher removed successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};

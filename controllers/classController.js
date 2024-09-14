@@ -38,3 +38,19 @@ exports.getClassAnalytics = async (req, res) => {
   }
 };
 
+
+
+exports.deleteClass = async (req, res) => {
+  try {
+    const classToDelete = await Class.findById(req.params.id);
+    if (!classToDelete) {
+      return res.status(404).json({ message: 'Class not found' });
+    }
+
+    await classToDelete.deleteOne();
+    res.json({ message: 'Class removed successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
