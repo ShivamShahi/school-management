@@ -76,6 +76,26 @@
 			"response": []
 		},
 		{
+			"name": "Delete class",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/classes/66e5a033964e0d792aa37c83",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"classes",
+						"66e5a033964e0d792aa37c83"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Add teacher",
 			"request": {
 				"method": "POST",
@@ -117,6 +137,26 @@
 					"path": [
 						"api",
 						"teachers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete teacher",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/teachers/66e328132799570227003eb0",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"teachers",
+						"66e328132799570227003eb0"
 					]
 				}
 			},
@@ -184,6 +224,26 @@
 					"path": [
 						"api",
 						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete student",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/students/66e5a0c6964e0d792aa37c8d",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"students",
+						"66e5a0c6964e0d792aa37c8d"
 					]
 				}
 			},
