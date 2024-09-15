@@ -78,31 +78,25 @@ exports.getClassAnalytics = async (req, res) => {
 // Get analytics for all classes (details and male/female student ratio)
 exports.getAllClassAnalytics = async (req, res) => {
   try {
-    // Fetch all classes along with the teacher and students information
-    const classes = await Class.find().populate('teacher').populate('students');
-
-    // For each class, get the male and female student counts
+    const classes = await Class.find();
     const classAnalytics = await Promise.all(classes.map(async (classObj) => {
-      const maleCount = await Student.countDocuments({ class: classObj._id, gender: 'male' });
-      const femaleCount = await Student.countDocuments({ class: classObj._id, gender: 'female' });
+      const students = await Student.find({ class: classObj._id });
+      const maleCount = students.filter(student => student.gender === 'Male').length;
+      const femaleCount = students.filter(student => student.gender === 'Female').length;
 
       return {
         class: classObj.className,
         maleCount,
         femaleCount,
-        totalStudents: maleCount + femaleCount,
+        totalStudents: maleCount + femaleCount
       };
     }));
 
-    // Send the response with analytics for all classes
     res.json(classAnalytics);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
-
-
-
 
 exports.deleteClass = async (req, res) => {
   try {
