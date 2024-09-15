@@ -74,7 +74,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"className\": \"10th Grade\",\n    \"year\": 2024,\n    \"teacher\": \"64a7e2b8fc13ae1c4d000001\",\n    \"studentFees\": 5000,\n    \"maxStudents\": 30\n}",
+					"raw": "{\n    \"className\": \"21th Grade\",\n    \"year\": 2024,\n    \"teacher\": \"John Dane\",\n    \"studentFees\": 5000,\n    \"maxStudents\": 30\n}",
 					"options": {
 						"raw": {
 							"language": "json"
