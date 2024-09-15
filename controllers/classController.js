@@ -24,7 +24,14 @@ exports.addClass = async (req, res) => {
 
     await newClass.save();
 
-    res.status(201).json(newClass);
+    res.status(201).json({
+      _id: newClass._id,
+      className: newClass.className,
+      year: newClass.year,
+      teacher: teacherObj.name, 
+      studentFees: newClass.studentFees,
+      maxStudents: newClass.maxStudents
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
