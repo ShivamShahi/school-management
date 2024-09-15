@@ -1,4 +1,5 @@
 const Teacher = require('../models/Teacher');
+const Class = require('../models/Class');
 
 // Add a teacher
 exports.addTeacher = async (req, res) => {
@@ -15,12 +16,24 @@ exports.addTeacher = async (req, res) => {
 // Get all teachers
 exports.getTeachers = async (req, res) => {
   try {
-    const teachers = await Teacher.find().populate('assignedClasses');
-    res.json(teachers);
+    const teachers = await Teacher.find();
+    const transformedTeachers = await Promise.all(teachers.map(async teacher => {
+      const classes = await Class.find({ teacher: teacher._id }, 'className');
+
+      const classNames = classes.map(classObj => classObj.className);
+
+      return {
+        ...teacher.toObject(),
+        assignedClasses: classNames
+      };
+    }));
+
+    res.json(transformedTeachers);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
+
 
 // Analytics: Get expenses for teachers
 exports.getTeacherExpenses = async (req, res) => {
