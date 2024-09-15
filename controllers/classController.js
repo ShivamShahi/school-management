@@ -13,14 +13,19 @@ exports.addClass = async (req, res) => {
   }
 };
 
-// Get all classes
 exports.getClasses = async (req, res) => {
   try {
-    const classes = await Class.find().populate('teacher', 'name').populate('students', 'name');
+    const classes = await Class.find().populate('teacher', 'name');
+    const transformedClasses = await Promise.all(classes.map(async classObj => {
+      const students = await Student.find({ class: classObj._id }, 'name');
 
-    const transformedClasses = classes.map(classObj => ({
-      ...classObj.toObject(), 
-      teacher: classObj.teacher ? classObj.teacher.name : 'No teacher assigned'
+      const studentNames = students.map(student => student.name);
+
+      return {
+        ...classObj.toObject(),
+        teacher: classObj.teacher ? classObj.teacher.name : 'No teacher assigned',
+        students: studentNames
+      };
     }));
 
     res.json(transformedClasses);
@@ -28,6 +33,7 @@ exports.getClasses = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
 
 // Get class analytics (e.g., class details, number of male and female students)
 exports.getClassAnalytics = async (req, res) => {
