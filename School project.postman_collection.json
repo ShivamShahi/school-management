@@ -8,7 +8,27 @@
 	},
 	"item": [
 		{
-			"name": "Gender analytics",
+			"name": "Gender analytics all classes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/classes/analytics",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"classes",
+						"analytics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gender analytics for a class",
 			"request": {
 				"method": "GET",
 				"header": [],

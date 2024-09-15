@@ -44,6 +44,33 @@ exports.getClassAnalytics = async (req, res) => {
   }
 };
 
+// Get analytics for all classes (details and male/female student ratio)
+exports.getAllClassAnalytics = async (req, res) => {
+  try {
+    // Fetch all classes along with the teacher and students information
+    const classes = await Class.find().populate('teacher').populate('students');
+
+    // For each class, get the male and female student counts
+    const classAnalytics = await Promise.all(classes.map(async (classObj) => {
+      const maleCount = await Student.countDocuments({ class: classObj._id, gender: 'male' });
+      const femaleCount = await Student.countDocuments({ class: classObj._id, gender: 'female' });
+
+      return {
+        class: classObj.className,
+        maleCount,
+        femaleCount,
+        totalStudents: maleCount + femaleCount,
+      };
+    }));
+
+    // Send the response with analytics for all classes
+    res.json(classAnalytics);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+
 
 
 exports.deleteClass = async (req, res) => {
