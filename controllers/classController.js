@@ -16,8 +16,14 @@ exports.addClass = async (req, res) => {
 // Get all classes
 exports.getClasses = async (req, res) => {
   try {
-    const classes = await Class.find().populate('teacher').populate('students');
-    res.json(classes);
+    const classes = await Class.find().populate('teacher', 'name').populate('students', 'name');
+
+    const transformedClasses = classes.map(classObj => ({
+      ...classObj.toObject(), 
+      teacher: classObj.teacher ? classObj.teacher.name : 'No teacher assigned'
+    }));
+
+    res.json(transformedClasses);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

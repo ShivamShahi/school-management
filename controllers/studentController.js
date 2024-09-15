@@ -15,8 +15,15 @@ exports.addStudent = async (req, res) => {
 // Get all students
 exports.getStudents = async (req, res) => {
   try {
-    const students = await Student.find().populate('class');
-    res.json(students);
+    const students = await Student.find().populate('class', 'className');
+
+    const transformedStudents = students.map(student => ({
+      ...student.toObject(), 
+      class: student.class.className 
+    }));
+
+    
+    res.json(transformedStudents);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
