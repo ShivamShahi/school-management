@@ -1,12 +1,34 @@
 const Student = require('../models/Student');
+const Class = require('../models/Class');
 
-// Add a student
+
+// Add a class
 exports.addStudent = async (req, res) => {
-  const { name, gender, dob, contactDetails, class: classId, feesPaid } = req.body;
+  const { name, gender, dob, contactDetails, className, feesPaid } = req.body;
+
   try {
-    const newStudent = new Student({ name, gender, dob, contactDetails, class: classId, feesPaid });
+    const classObj = await Class.findOne({ className: className });
+
+    if (!classObj) {
+      return res.status(404).json({ message: 'Class not found' });
+    }
+
+    const newStudent = new Student({
+       name, gender, dob, contactDetails, class: classObj._id, feesPaid 
+      });
+
     await newStudent.save();
-    res.status(201).json(newStudent);
+
+    res.status(201).json({
+      _id: newStudent._id,
+      name: newStudent.name,
+      gender: newStudent.gender,
+      dob: newStudent.dob,
+      contactDetails: newStudent.contactDetails,
+      className: classObj.className,
+      feesPaid: newStudent.feesPaid
+    });
+
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

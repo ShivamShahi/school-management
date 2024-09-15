@@ -209,7 +209,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"Jane Doe\",\n  \"gender\": \"female\",\n  \"dob\": \"2005-07-12\",\n  \"contactDetails\": \"jane.doe@example.com\",\n  \"class\": \"64a7e2b8fc13ae1c4d000002\",  // class ID\n  \"feesPaid\": 1000\n}\n",
+					"raw": "{\n  \"name\": \"Jane Doe\",\n  \"gender\": \"female\",\n  \"dob\": \"2005-07-12\",\n  \"contactDetails\": \"jane.doe@example.com\",\n  \"className\": \"1th Grade\", \n  \"feesPaid\": 1000\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
