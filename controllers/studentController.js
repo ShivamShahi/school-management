@@ -41,7 +41,7 @@ exports.getStudents = async (req, res) => {
 
     const transformedStudents = students.map(student => ({
       ...student.toObject(), 
-      class: student.class.className 
+      class: student.class ? student.class.className : "No class assigned"
     }));
 
     
