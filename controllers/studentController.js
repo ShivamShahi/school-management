@@ -25,7 +25,7 @@ exports.addStudent = async (req, res) => {
       gender: newStudent.gender,
       dob: newStudent.dob,
       contactDetails: newStudent.contactDetails,
-      className: classObj.className,
+      class: classObj.className,
       feesPaid: newStudent.feesPaid
     });
 
